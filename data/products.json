@@ -1,0 +1,499 @@
+[
+  {
+    "id": 1,
+    "name": "Nordic Ceramic Pot",
+    "price": 45,
+    "category": "Indoor Pots",
+    "collection": "Scandinavian Series",
+    "description": "Handcrafted ceramic pot with a matte finish. Perfect for indoor plants and modern interiors. Features drainage hole and saucer.",
+    "rating": 4.8,
+    "reviews": 124,
+    "sku": "PTH-NCP-001",
+    "stock": 15,
+    "images": [
+      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "White",
+        "Beige",
+        "Terracotta"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    "tags": [
+      "ceramic",
+      "indoor",
+      "minimalist",
+      "bestseller"
+    ],
+    "featured": true
+  },
+  {
+    "id": 2,
+    "name": "TerraGlow Clay Planter",
+    "price": 38,
+    "category": "Outdoor Planters",
+    "collection": "Urban Jungle",
+    "description": "Weather-resistant clay planter with a natural glow finish. Ideal for balconies and garden patios.",
+    "rating": 4.6,
+    "reviews": 89,
+    "sku": "PTH-TCP-002",
+    "stock": 22,
+    "images": [
+      "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1509937528035-ad76254b0356?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Raw Clay",
+        "Glazed Blue"
+      ],
+      "size": [
+        "M",
+        "L"
+      ]
+    },
+    "tags": [
+      "clay",
+      "outdoor",
+      "rustic"
+    ],
+    "featured": true
+  },
+  {
+    "id": 3,
+    "name": "Hanging Ivy Basket",
+    "price": 28,
+    "category": "Hanging Collection",
+    "collection": "Hanging Collection",
+    "description": "Woven rattan hanging basket with macrame cord. Adds bohemian charm to any corner.",
+    "rating": 4.9,
+    "reviews": 210,
+    "sku": "PTH-HIB-003",
+    "stock": 8,
+    "images": [
+      "https://images.unsplash.com/photo-1509645470620-c9c349934693?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1512428813834-c702c7702b78?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Natural",
+        "Bleached White",
+        "Charcoal"
+      ],
+      "size": [
+        "One Size"
+      ]
+    },
+    "tags": [
+      "hanging",
+      "boho",
+      "rattan",
+      "bestseller"
+    ],
+    "featured": true
+  },
+  {
+    "id": 4,
+    "name": "Concrete Urban Planter",
+    "price": 55,
+    "category": "Urban Jungle",
+    "collection": "Concrete Studio",
+    "description": "Industrial-style concrete planter with geometric lines. Built to last with reinforced walls.",
+    "rating": 4.7,
+    "reviews": 67,
+    "sku": "PTH-CUP-004",
+    "stock": 12,
+    "images": [
+      "https://images.unsplash.com/photo-1516475429286-465d815a0df7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1463320898484-cdee8141c787?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Raw Concrete",
+        "Dark Gray"
+      ],
+      "size": [
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    "tags": [
+      "concrete",
+      "industrial",
+      "urban"
+    ],
+    "featured": false
+  },
+  {
+    "id": 5,
+    "name": "Matte Black Succulent Pot",
+    "price": 22,
+    "category": "Minimalist Collection",
+    "collection": "Minimalist Collection",
+    "description": "Sleek matte black ceramic pot designed for succulents and cacti. Includes bamboo tray.",
+    "rating": 4.5,
+    "reviews": 156,
+    "sku": "PTH-MBS-005",
+    "stock": 30,
+    "images": [
+      "https://images.unsplash.com/photo-1504198266287-1659872e6590?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1453904300235-0f1f22e68b48?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Matte Black",
+        "Matte White"
+      ],
+      "size": [
+        "XS",
+        "S"
+      ]
+    },
+    "tags": [
+      "minimalist",
+      "succulent",
+      "black",
+      "bestseller"
+    ],
+    "featured": true
+  },
+  {
+    "id": 6,
+    "name": "Scandinavian Oak Planter",
+    "price": 65,
+    "category": "Scandinavian Series",
+    "collection": "Scandinavian Series",
+    "description": "Solid oak wood planter box with Danish oil finish. Elevated legs for air circulation.",
+    "rating": 4.8,
+    "reviews": 92,
+    "sku": "PTH-SOP-006",
+    "stock": 9,
+    "images": [
+      "https://images.unsplash.com/photo-1506326426992-32b61983f54e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Natural Oak",
+        "Walnut"
+      ],
+      "size": [
+        "M",
+        "L"
+      ]
+    },
+    "tags": [
+      "wood",
+      "scandinavian",
+      "premium"
+    ],
+    "featured": true
+  },
+  {
+    "id": 7,
+    "name": "Golden Rim Luxury Pot",
+    "price": 89,
+    "category": "Luxury Ceramic",
+    "collection": "Luxury Ceramic",
+    "description": "Porcelain pot with 24k gold rim detailing. A statement piece for luxury interiors.",
+    "rating": 4.9,
+    "reviews": 45,
+    "sku": "PTH-GRL-007",
+    "stock": 5,
+    "images": [
+      "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "White Gold",
+        "Black Gold"
+      ],
+      "size": [
+        "S",
+        "M"
+      ]
+    },
+    "tags": [
+      "luxury",
+      "gold",
+      "ceramic",
+      "premium"
+    ],
+    "featured": true
+  },
+  {
+    "id": 8,
+    "name": "Marble Luxe Planter",
+    "price": 120,
+    "category": "Luxury Ceramic",
+    "collection": "Luxury Ceramic",
+    "description": "Genuine Carrara marble planter. Each piece is unique with natural veining patterns.",
+    "rating": 5.0,
+    "reviews": 38,
+    "sku": "PTH-MLP-008",
+    "stock": 3,
+    "images": [
+      "https://images.unsplash.com/photo-1567225591450-06036b3b1b29?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "White Marble",
+        "Green Marble"
+      ],
+      "size": [
+        "M",
+        "L"
+      ]
+    },
+    "tags": [
+      "marble",
+      "luxury",
+      "statement"
+    ],
+    "featured": false
+  },
+  {
+    "id": 9,
+    "name": "Eco Bamboo Pot",
+    "price": 35,
+    "category": "Indoor Pots",
+    "collection": "Scandinavian Series",
+    "description": "Sustainable bamboo fiber pot with biodegradable composition. Eco-friendly and stylish.",
+    "rating": 4.4,
+    "reviews": 78,
+    "sku": "PTH-EBP-009",
+    "stock": 25,
+    "images": [
+      "https://images.unsplash.com/photo-1512428813834-c702c7702b78?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Natural",
+        "Charcoal",
+        "Sage"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    "tags": [
+      "eco",
+      "bamboo",
+      "sustainable"
+    ],
+    "featured": false
+  },
+  {
+    "id": 10,
+    "name": "Vertical Wall Planter",
+    "price": 75,
+    "category": "Urban Jungle",
+    "collection": "Urban Jungle",
+    "description": "Modular wall-mounted planter system. Create living walls in small spaces.",
+    "rating": 4.7,
+    "reviews": 112,
+    "sku": "PTH-VWP-010",
+    "stock": 14,
+    "images": [
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "White",
+        "Gray",
+        "Black"
+      ],
+      "size": [
+        "2-Pack",
+        "4-Pack"
+      ]
+    },
+    "tags": [
+      "wall",
+      "vertical",
+      "space-saving",
+      "urban"
+    ],
+    "featured": true
+  },
+  {
+    "id": 11,
+    "name": "Rustic Stone Pot",
+    "price": 48,
+    "category": "Outdoor Planters",
+    "collection": "Concrete Studio",
+    "description": "Hand-carved stone planter with aged patina. Heavy-duty for outdoor use.",
+    "rating": 4.6,
+    "reviews": 54,
+    "sku": "PTH-RSP-011",
+    "stock": 11,
+    "images": [
+      "https://images.unsplash.com/photo-1504198266287-1659872e6590?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1463320898484-cdee8141c787?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Sandstone",
+        "Granite"
+      ],
+      "size": [
+        "M",
+        "L"
+      ]
+    },
+    "tags": [
+      "stone",
+      "outdoor",
+      "rustic",
+      "heavy"
+    ],
+    "featured": false
+  },
+  {
+    "id": 12,
+    "name": "Minimal White Cylinder Pot",
+    "price": 30,
+    "category": "Minimalist Collection",
+    "collection": "Minimalist Collection",
+    "description": "Pure white cylindrical ceramic pot. The essence of minimalism for modern homes.",
+    "rating": 4.5,
+    "reviews": 198,
+    "sku": "PTH-MWC-012",
+    "stock": 40,
+    "images": [
+      "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Pure White",
+        "Soft Gray"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L"
+      ]
+    },
+    "tags": [
+      "minimalist",
+      "white",
+      "cylinder",
+      "bestseller"
+    ],
+    "featured": true
+  },
+  {
+    "id": 13,
+    "name": "Pebble Texture Planter",
+    "price": 42,
+    "category": "Scandinavian Series",
+    "collection": "Scandinavian Series",
+    "description": "Textured ceramic with organic pebble surface. Tactile and visually interesting.",
+    "rating": 4.7,
+    "reviews": 73,
+    "sku": "PTH-PTP-013",
+    "stock": 18,
+    "images": [
+      "https://images.unsplash.com/photo-1509937528035-ad76254b0356?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Cream",
+        "Dusty Rose",
+        "Sage"
+      ],
+      "size": [
+        "S",
+        "M"
+      ]
+    },
+    "tags": [
+      "texture",
+      "ceramic",
+      "scandinavian"
+    ],
+    "featured": false
+  },
+  {
+    "id": 14,
+    "name": "Modern Arch Vase",
+    "price": 58,
+    "category": "Indoor Pots",
+    "collection": "Luxury Ceramic",
+    "description": "Architectural vase with arch silhouette. Doubles as a sculptural art piece.",
+    "rating": 4.8,
+    "reviews": 61,
+    "sku": "PTH-MAV-014",
+    "stock": 7,
+    "images": [
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "White",
+        "Terracotta",
+        "Black"
+      ],
+      "size": [
+        "One Size"
+      ]
+    },
+    "tags": [
+      "arch",
+      "vase",
+      "modern",
+      "art"
+    ],
+    "featured": true
+  },
+  {
+    "id": 15,
+    "name": "Sage Indoor Pot Set",
+    "price": 95,
+    "category": "Indoor Pots",
+    "collection": "Scandinavian Series",
+    "description": "Set of 3 nested pots in sage green. Perfect for creating cohesive plant displays.",
+    "rating": 4.9,
+    "reviews": 134,
+    "sku": "PTH-SIP-015",
+    "stock": 10,
+    "images": [
+      "https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": {
+      "color": [
+        "Sage",
+        "Terracotta",
+        "Charcoal"
+      ],
+      "size": [
+        "Set of 3"
+      ]
+    },
+    "tags": [
+      "set",
+      "sage",
+      "indoor",
+      "bestseller"
+    ],
+    "featured": true
+  }
+]

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account — PotHub</title>
+  <meta name="description" content="Manage your PotHub account, orders, and preferences.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .account-layout { display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:start; }
+    .account-sidebar { position:sticky; top:100px; }
+    .account-nav { display:flex; flex-direction:column; gap:4px; }
+    .account-nav a { display:flex; align-items:center; gap:12px; padding:12px 16px; border-radius:var(--radius-md); font-size:0.9375rem; font-weight:500; color:var(--text); transition:var(--transition); }
+    .account-nav a:hover, .account-nav a.active { background:var(--color-light-bg); }
+    .account-nav a svg { width:18px; height:18px; color:var(--color-text-muted); }
+    @media(max-width:768px){ .account-layout { grid-template-columns:1fr; } .account-sidebar { position:static; } }
+  </style>
+</head>
+<body>
+  <div id="page-loader" class="page-loader"><div class="loader-spinner"></div></div>
+  <div id="navbar-container"></div>
+
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a> / <span>My Account</span>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h1 class="section-title">My Account</h1>
+          <p class="section-subtitle">Welcome back, <span id="account-name">User</span></p>
+        </div>
+        <button class="btn btn-secondary btn-sm" data-logout>Logout</button>
+      </div>
+
+      <div class="account-layout">
+        <aside class="account-sidebar">
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+              <div style="width:56px;height:56px;border-radius:50%;background:var(--color-green);color:var(--color-white);display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:700;">
+                <span id="account-initial">U</span>
+              </div>
+              <div>
+                <div style="font-weight:700;" id="account-name-sidebar">User</div>
+                <div style="font-size:0.875rem;color:var(--color-text-muted);" id="account-email">user@example.com</div>
+              </div>
+            </div>
+            <nav class="account-nav">
+              <a href="#orders" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                Orders
+              </a>
+              <a href="wishlist.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                Wishlist
+              </a>
+              <a href="#addresses">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Addresses
+              </a>
+              <a href="#settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                Settings
+              </a>
+            </nav>
+          </div>
+        </aside>
+
+        <div>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;margin-bottom:24px;" id="orders">
+            <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:24px;">Order History</h2>
+            <div id="orders-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;" id="recently-viewed-section">
+            <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:24px;">Recently Viewed</h2>
+            <div class="product-grid" id="recently-viewed-grid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (async function() {
+      const user = PotHub.Auth.getUser();
+      if (!user) { window.location.href = 'login.html'; return; }
+
+      document.getElementById('account-name').textContent = user.name;
+      document.getElementById('account-name-sidebar').textContent = user.name;
+      document.getElementById('account-email').textContent = user.email;
+      document.getElementById('account-initial').textContent = user.name.charAt(0).toUpperCase();
+
+      // Orders
+      const lastOrder = JSON.parse(localStorage.getItem('pothub_last_order') || 'null');
+      const ordersList = document.getElementById('orders-list');
+
+      if (lastOrder) {
+        const date = new Date(lastOrder.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        ordersList.innerHTML = `
+          <div style="border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <div>
+                <div style="font-weight:700;">Order ${lastOrder.id}</div>
+                <div style="font-size:0.875rem;color:var(--color-text-muted);">${date}</div>
+              </div>
+              <span style="background:var(--color-green);color:var(--color-white);padding:4px 12px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:600;">Completed</span>
+            </div>
+            <div style="display:flex;gap:12px;">
+              ${lastOrder.items.map(i => `<img src="${i.image}" style="width:48px;height:48px;object-fit:cover;border-radius:var(--radius-sm);background:var(--color-light-bg);">`).join('')}
+            </div>
+            <div style="margin-top:12px;font-weight:600;">Total: $${lastOrder.total.toFixed(2)}</div>
+          </div>
+        `;
+      } else {
+        ordersList.innerHTML = `
+          <div style="text-align:center;padding:40px 0;color:var(--color-text-muted);">
+            <p>No orders yet.</p>
+            <a href="shop.html" class="btn btn-secondary" style="margin-top:16px;">Start Shopping</a>
+          </div>
+        `;
+      }
+
+      // Recently viewed
+      const recentIds = JSON.parse(localStorage.getItem('pothub_recent') || '[]');
+      if (recentIds.length) {
+        const products = await PotHub.Products.getAll();
+        const recent = products.filter(p => recentIds.includes(p.id)).slice(0, 4);
+        document.getElementById('recently-viewed-grid').innerHTML = recent.map(p => PotHub.Products.renderCard(p)).join('');
+      } else {
+        document.getElementById('recently-viewed-section').style.display = 'none';
+      }
+
+      PotHub.Animations.refresh();
+    })();
+  </script>
+</body>
+</html>

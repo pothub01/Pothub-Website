@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections — PotHub</title>
+  <meta name="description" content="Explore curated collections of premium plant pots and planters at PotHub.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="page-loader" class="page-loader"><div class="loader-spinner"></div></div>
+  <div id="navbar-container"></div>
+
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="index.html"></a> / <span></span>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h1 class="section-title">Our Collections</h1>
+          <p class="section-subtitle">Thoughtfully curated for every style</p>
+        </div>
+      </div>
+      <div class="collection-grid" id="collections-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--color-light-bg);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h2 class="section-title">Collection Products</h2>
+          <p class="section-subtitle" id="collection-products-subtitle">Select a collection to view products</p>
+        </div>
+      </div>
+      <div class="product-grid" id="collection-products-grid">
+        <div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted);">
+          <p>Click on a collection above to explore its products.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (async function() {
+      const products = await PotHub.Products.getAll();
+      const collections = [...new Set(products.map(p => p.collection))];
+
+      const collectionImages = {
+        'Scandinavian Series': 'https://images.unsplash.com/photo-1506326426992-32b61983f54e?auto=format&fit=crop&w=600&q=80',
+        'Urban Jungle': 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80',
+        'Luxury Ceramic': 'https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=600&q=80',
+        'Minimalist Collection': 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=600&q=80',
+        'Hanging Collection': 'https://images.unsplash.com/photo-1509645470620-c9c349934693?auto=format&fit=crop&w=600&q=80',
+        'Concrete Studio': 'https://images.unsplash.com/photo-1516475429286-465d815a0df7?auto=format&fit=crop&w=600&q=80'
+      };
+
+      document.getElementById('collections-grid').innerHTML = collections.map((c, i) => {
+        const count = products.filter(p => p.collection === c).length;
+        return `
+          <div class="collection-card reveal ${i > 0 ? 'delay-' + Math.min(i, 3) + '00' : ''}" style="cursor:pointer;" data-collection="${c}">
+            <img src="${collectionImages[c] || 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=600&q=80'}" alt="${c}">
+            <div class="collection-overlay">
+              <h3 class="collection-title">${c}</h3>
+              <p class="collection-count">${count} Products</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Handle collection click
+      document.querySelectorAll('[data-collection]').forEach(card => {
+        card.addEventListener('click', async () => {
+          const col = card.dataset.collection;
+          const colProducts = products.filter(p => p.collection === col);
+          document.getElementById('collection-products-subtitle').textContent = `${colProducts.length} products in ${col}`;
+          document.getElementById('collection-products-grid').innerHTML = colProducts.map(p => PotHub.Products.renderCard(p)).join('');
+          PotHub.Animations.refresh();
+          document.getElementById('collection-products-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Check URL param
+      const urlParams = new URLSearchParams(window.location.search);
+      const colParam = urlParams.get('c');
+      if (colParam) {
+        const card = document.querySelector(`[data-collection="${colParam}"]`);
+        if (card) card.click();
+      }
+
+      PotHub.Animations.refresh();
+    })();
+  </script>
+</body>
+</html>

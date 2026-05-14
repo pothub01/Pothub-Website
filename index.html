@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PotHub — Premium Plant Pots & Indoor Gardening</title>
+  <meta name="description" content="Discover premium plant pots, ceramic planters, and indoor gardening accessories at PotHub. Modern minimalist lifestyle products for your home.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="page-loader" class="page-loader"><div class="loader-spinner"></div></div>
+  <div id="navbar-container"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-label animate-fade-in-up">New Collection 2026</span>
+      <h1 class="hero-title animate-fade-in-up delay-100">Elevate Your Space with Nature</h1>
+      <p class="hero-desc animate-fade-in-up delay-200">Handcrafted ceramic planters and modern pots designed for the contemporary home. Transform any room into a living sanctuary.</p>
+      <div class="hero-buttons animate-fade-in-up delay-300">
+        <a href="shop.html" class="btn btn-white btn-lg">Shop Collection</a>
+        <a href="collections.html" class="btn btn-secondary btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.4);">Explore Collections</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Collections -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h2 class="section-title">Shop by Collection</h2>
+          <p class="section-subtitle">Curated styles for every interior</p>
+        </div>
+        <a href="collections.html" class="btn btn-secondary btn-sm">View All</a>
+      </div>
+      <div class="collection-grid" id="home-collections">
+        <a href="collections.html?c=Scandinavian+Series" class="collection-card reveal">
+          <img src="https://images.unsplash.com/photo-1506326426992-32b61983f54e?auto=format&fit=crop&w=600&q=80" alt="Scandinavian Series">
+          <div class="collection-overlay">
+            <h3 class="collection-title">Scandinavian Series</h3>
+            <p class="collection-count">5 Products</p>
+          </div>
+        </a>
+        <a href="collections.html?c=Urban+Jungle" class="collection-card reveal delay-100">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" alt="Urban Jungle">
+          <div class="collection-overlay">
+            <h3 class="collection-title">Urban Jungle</h3>
+            <p class="collection-count">3 Products</p>
+          </div>
+        </a>
+        <a href="collections.html?c=Luxury+Ceramic" class="collection-card reveal delay-200">
+          <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=600&q=80" alt="Luxury Ceramic">
+          <div class="collection-overlay">
+            <h3 class="collection-title">Luxury Ceramic</h3>
+            <p class="collection-count">3 Products</p>
+          </div>
+        </a>
+        <a href="collections.html?c=Minimalist+Collection" class="collection-card reveal delay-300">
+          <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=600&q=80" alt="Minimalist">
+          <div class="collection-overlay">
+            <h3 class="collection-title">Minimalist Collection</h3>
+            <p class="collection-count">3 Products</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Sellers -->
+  <section class="section" style="background:var(--color-light-bg);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h2 class="section-title">Bestsellers</h2>
+          <p class="section-subtitle">Our most loved pieces this season</p>
+        </div>
+        <a href="shop.html?filter=bestseller" class="btn btn-secondary btn-sm">View All</a>
+      </div>
+      <div class="product-grid" id="bestsellers-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Promotional Banner -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="banner reveal">
+        <div class="banner-bg" style="background-image:url('https://images.unsplash.com/photo-1463320898484-cdee8141c787?auto=format&fit=crop&w=1400&q=80');"></div>
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+          <span class="text-xs" style="opacity:0.8;margin-bottom:12px;display:block;">Limited Edition</span>
+          <h2 class="banner-title">The Concrete Studio Collection</h2>
+          <p style="opacity:0.9;margin-bottom:24px;">Industrial aesthetics meet organic forms. Hand-poured concrete planters for the bold interior.</p>
+          <a href="collections.html?c=Concrete+Studio" class="btn btn-white">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h2 class="section-title">New Arrivals</h2>
+          <p class="section-subtitle">Fresh designs just landed</p>
+        </div>
+        <a href="shop.html?filter=new" class="btn btn-secondary btn-sm">View All</a>
+      </div>
+      <div class="product-grid" id="new-arrivals-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifestyle Showcase -->
+  <section class="section" style="background:var(--color-light-bg);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" class="reveal">
+        <div>
+          <span class="text-xs text-green" style="margin-bottom:16px;display:block;">Lifestyle</span>
+          <h2 class="section-title" style="margin-bottom:20px;">Bring Nature Indoors</h2>
+          <p style="color:var(--color-text-muted);font-size:1.0625rem;line-height:1.8;margin-bottom:24px;">Our planters are more than containers — they are a statement of intent. Designed to complement modern architecture and curated interiors, each piece bridges the gap between nature and design.</p>
+          <div style="display:flex;gap:32px;margin-bottom:32px;">
+            <div><div style="font-size:2rem;font-weight:700;font-family:var(--font-display);">15k+</div><div style="font-size:0.875rem;color:var(--color-text-muted);">Happy Customers</div></div>
+            <div><div style="font-size:2rem;font-weight:700;font-family:var(--font-display);">50+</div><div style="font-size:0.875rem;color:var(--color-text-muted);">Unique Designs</div></div>
+            <div><div style="font-size:2rem;font-weight:700;font-family:var(--font-display);">100%</div><div style="font-size:0.875rem;color:var(--color-text-muted);">Sustainable</div></div>
+          </div>
+          <a href="about.html" class="btn btn-primary">Our Story</a>
+        </div>
+        <div style="border-radius:var(--radius-xl);overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Lifestyle" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:48px;">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Real reviews from plant lovers</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"The Nordic Ceramic Pot completely transformed my living room. The quality is exceptional and the matte finish is stunning in person."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Sarah">
+            <div><div style="font-weight:600;">Sarah Mitchell</div><div style="font-size:0.875rem;color:var(--color-text-muted);">Interior Designer</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal delay-100">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"I ordered the Hanging Ivy Basket set and they are absolutely gorgeous. The macrame is thick and high quality. Fast shipping too!"</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="James">
+            <div><div style="font-weight:600;">James Chen</div><div style="font-size:0.875rem;color:var(--color-text-muted);">Plant Enthusiast</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal delay-200">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"The Marble Luxe Planter is a true statement piece. Everyone who visits asks where I got it. Worth every penny for the craftsmanship."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Emma">
+            <div><div style="font-weight:600;">Emma Rodriguez</div><div style="font-size:0.875rem;color:var(--color-text-muted);">Home Stylist</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <span class="text-xs" style="opacity:0.6;margin-bottom:16px;display:block;">Newsletter</span>
+      <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;margin-bottom:12px;">Join the PotHub Community</h2>
+      <p style="opacity:0.7;max-width:500px;margin:0 auto;">Get early access to new collections, styling tips, and exclusive offers delivered to your inbox.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault();PotHub.App.toast('Thank you for subscribing!','success');this.reset();">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn btn-terracotta">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="section-sm" style="padding-bottom:0;">
+    <div class="container" style="margin-bottom:16px;">
+      <div class="section-header reveal" style="margin-bottom:24px;">
+        <div>
+          <h2 class="section-title" style="font-size:1.5rem;">@pothub</h2>
+          <p class="section-subtitle">Follow us for daily inspiration</p>
+        </div>
+        <a href="#" class="btn btn-secondary btn-sm">Follow</a>
+      </div>
+    </div>
+    <div class="instagram-grid">
+      <a href="#"><img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=400&q=80" alt="Instagram"></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1509645470620-c9c349934693?auto=format&fit=crop&w=400&q=80" alt="Instagram"></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&w=400&q=80" alt="Instagram"></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1504198266287-1659872e6590?auto=format&fit=crop&w=400&q=80" alt="Instagram"></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1512428813834-c702c7702b78?auto=format&fit=crop&w=400&q=80" alt="Instagram"></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=400&q=80" alt="Instagram"></a>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+  <a href="#" class="chat-widget" aria-label="Support chat">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  </a>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (async function() {
+      const bestsellers = await PotHub.Products.getBestsellers();
+      document.getElementById('bestsellers-grid').innerHTML = bestsellers.map(p => PotHub.Products.renderCard(p)).join('');
+
+      const newArrivals = await PotHub.Products.getNewArrivals();
+      document.getElementById('new-arrivals-grid').innerHTML = newArrivals.slice(0,4).map(p => PotHub.Products.renderCard(p)).join('');
+
+      PotHub.Animations.refresh();
+    })();
+  </script>
+</body>
+</html>

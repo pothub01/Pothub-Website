@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — PotHub</title>
+  <meta name="description" content="Browse our complete collection of premium plant pots, ceramic planters, and indoor gardening accessories.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="page-loader" class="page-loader"><div class="loader-spinner"></div></div>
+  <div id="navbar-container"></div>
+
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="index.html"></a> / <span></span>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h1 class="section-title">Shop All Products</h1>
+          <p class="section-subtitle" id="result-count">Loading products...</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:32px;align-items:flex-start;">
+        <!-- Sidebar Filters -->
+        <aside style="width:260px;flex-shrink:0;position:sticky;top:100px;" class="hidden-mobile" id="shop-sidebar">
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;">
+            <h4 style="font-size:0.875rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;font-weight:700;">Categories</h4>
+            <div id="category-filters" style="display:flex;flex-direction:column;gap:8px;"></div>
+          </div>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;">
+            <h4 style="font-size:0.875rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;font-weight:700;">Collections</h4>
+            <div id="collection-filters" style="display:flex;flex-direction:column;gap:8px;"></div>
+          </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;" id="active-filters"></div>
+            <select id="sort-select" style="padding:10px 16px;border:1.5px solid var(--border);border-radius:var(--radius-md);background:var(--card-bg);color:var(--text);font-size:0.875rem;cursor:pointer;">
+              <option value="featured">Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+          <div class="product-grid" id="shop-grid">
+            <!-- Skeleton loaders initially -->
+          </div>
+          <div class="pagination" id="shop-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (async function() {
+      const grid = document.getElementById('shop-grid');
+      grid.innerHTML = PotHub.Products.renderSkeleton(8);
+
+      let allProducts = await PotHub.Products.getAll();
+      let filtered = [...allProducts];
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchQuery = urlParams.get('q');
+      const filterType = urlParams.get('filter');
+      const collectionParam = urlParams.get('c');
+
+      if (searchQuery) {
+        filtered = await PotHub.Products.search(searchQuery);
+        document.querySelector('.section-title').textContent = 'Search Results';
+      }
+      if (filterType === 'bestseller') {
+        filtered = allProducts.filter(p => p.tags.includes('bestseller'));
+        document.querySelector('.section-title').textContent = 'Bestsellers';
+      }
+      if (filterType === 'new') {
+        filtered = allProducts.slice(-6).reverse();
+        document.querySelector('.section-title').textContent = 'New Arrivals';
+      }
+      if (collectionParam) {
+        filtered = allProducts.filter(p => p.collection === collectionParam || p.category === collectionParam);
+        document.querySelector('.section-title').textContent = collectionParam;
+      }
+
+      const categories = await PotHub.Products.getCategories();
+      const collections = await PotHub.Products.getCollections();
+
+      document.getElementById('category-filters').innerHTML = 
+        '<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9375rem;"><input type="radio" name="category" value="All" checked style="accent-color:var(--color-green);"> All Categories</label>' +
+        categories.map(c => `<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9375rem;"><input type="radio" name="category" value="${c}" style="accent-color:var(--color-green);"> ${c}</label>`).join('');
+
+      document.getElementById('collection-filters').innerHTML = 
+        '<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9375rem;"><input type="radio" name="collection" value="All" checked style="accent-color:var(--color-green);"> All Collections</label>' +
+        collections.map(c => `<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9375rem;"><input type="radio" name="collection" value="${c}" style="accent-color:var(--color-green);"> ${c}</label>`).join('');
+
+      function render() {
+        const cat = document.querySelector('input[name="category"]:checked')?.value || 'All';
+        const col = document.querySelector('input[name="collection"]:checked')?.value || 'All';
+        const sort = document.getElementById('sort-select').value;
+
+        let result = filtered.filter(p => {
+          if (cat !== 'All' && p.category !== cat) return false;
+          if (col !== 'All' && p.collection !== col) return false;
+          return true;
+        });
+
+        if (sort === 'price-low') result.sort((a,b) => a.price - b.price);
+        if (sort === 'price-high') result.sort((a,b) => b.price - a.price);
+        if (sort === 'rating') result.sort((a,b) => b.rating - a.rating);
+        if (sort === 'newest') result.sort((a,b) => b.id - a.id);
+
+        document.getElementById('result-count').textContent = `${result.length} product${result.length !== 1 ? 's' : ''}`;
+
+        grid.innerHTML = result.length ? result.map(p => PotHub.Products.renderCard(p)).join('') : 
+          '<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted);"><p>No products match your filters.</p></div>';
+
+        PotHub.Animations.refresh();
+      }
+
+      document.querySelectorAll('input[name="category"], input[name="collection"]').forEach(el => {
+        el.addEventListener('change', render);
+      });
+      document.getElementById('sort-select').addEventListener('change', render);
+
+      render();
+    })();
+  </script>
+</body>
+</html>

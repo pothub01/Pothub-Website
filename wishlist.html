@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist — PotHub</title>
+  <meta name="description" content="View and manage your saved items at PotHub.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="page-loader" class="page-loader"><div class="loader-spinner"></div></div>
+  <div id="navbar-container"></div>
+
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="index.html"></a> / <span></span>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h1 class="section-title">My Wishlist</h1>
+          <p class="section-subtitle">Items you've saved for later</p>
+        </div>
+      </div>
+      <div class="product-grid" id="wishlist-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      PotHub.Wishlist.renderPage();
+    });
+  </script>
+</body>
+</html>

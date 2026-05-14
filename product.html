@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product — PotHub</title>
+  <meta name="description" content="Premium plant pot product details at PotHub.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .product-gallery { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    .product-gallery img { width:100%; height:100%; object-fit:cover; border-radius:var(--radius-lg); cursor:zoom-in; transition:transform 0.3s; }
+    .product-gallery img:hover { transform:scale(1.02); }
+    .variant-btn { padding:10px 20px; border:1.5px solid var(--border); border-radius:var(--radius-full); background:var(--card-bg); color:var(--text); font-size:0.875rem; font-weight:500; cursor:pointer; transition:var(--transition); }
+    .variant-btn:hover, .variant-btn.active { border-color:var(--color-black); background:var(--color-black); color:var(--color-white); }
+    .tab-btn { padding:12px 0; border:none; background:none; font-size:0.9375rem; font-weight:600; color:var(--color-text-muted); border-bottom:2px solid transparent; cursor:pointer; }
+    .tab-btn.active { color:var(--text); border-bottom-color:var(--color-green); }
+    .tab-panel { display:none; padding-top:24px; }
+    .tab-panel.active { display:block; }
+  </style>
+</head>
+<body>
+  <div id="page-loader" class="page-loader"><div class="loader-spinner"></div></div>
+  <div id="navbar-container"></div>
+
+  <div class="container">
+    <div class="breadcrumbs" id="product-breadcrumbs">
+      <a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <span>Product</span>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div id="product-container">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--color-light-bg);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <h2 class="section-title">You May Also Like</h2>
+          <p class="section-subtitle">Customers also viewed these</p>
+        </div>
+      </div>
+      <div class="product-grid" id="related-products">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (async function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      if (!productId) { window.location.href = 'shop.html'; return; }
+
+      const product = await PotHub.Products.getById(productId);
+      if (!product) { window.location.href = 'shop.html'; return; }
+
+      document.title = product.name + ' — PotHub';
+      document.getElementById('product-breadcrumbs').innerHTML = 
+        `<a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <a href="shop.html?c=${encodeURIComponent(product.category)}">${product.category}</a> / <span>${product.name}</span>`;
+
+      let selectedColor = product.variants.color ? product.variants.color[0] : null;
+      let selectedSize = product.variants.size ? product.variants.size[0] : null;
+      let quantity = 1;
+
+      const container = document.getElementById('product-container');
+      container.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;" class="reveal">
+          <div class="product-gallery">
+            ${product.images.map((img, i) => `<img src="${img}" alt="${product.name} ${i+1}" class="${i===0 ? 'main-img' : ''}">`).join('')}
+          </div>
+          <div style="position:sticky;top:100px;">
+            <div class="product-category" style="margin-bottom:8px;">${product.category}</div>
+            <h1 style="font-size:2rem;font-weight:700;margin-bottom:12px;font-family:var(--font-display);">${product.name}</h1>
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+              <span style="font-size:1.5rem;font-weight:700;">$${product.price}</span>
+              <div class="product-rating">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>${product.rating} (${product.reviews} reviews)</span>
+              </div>
+            </div>
+            <p style="color:var(--color-text-muted);line-height:1.7;margin-bottom:24px;">${product.description}</p>
+
+            ${product.variants.color ? `
+              <div style="margin-bottom:20px;">
+                <label style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em;">Color</label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;" id="color-options">
+                  ${product.variants.color.map(c => `<button class="variant-btn ${c === selectedColor ? 'active' : ''}" data-color="${c}">${c}</button>`).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            ${product.variants.size ? `
+              <div style="margin-bottom:20px;">
+                <label style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em;">Size</label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;" id="size-options">
+                  ${product.variants.size.map(s => `<button class="variant-btn ${s === selectedSize ? 'active' : ''}" data-size="${s}">${s}</button>`).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <div style="margin-bottom:24px;">
+              <label style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em;">Quantity</label>
+              <div class="qty-control" style="display:inline-flex;">
+                <button id="qty-dec">−</button>
+                <span id="qty-display">1</span>
+                <button id="qty-inc">+</button>
+              </div>
+              <span style="margin-left:16px;font-size:0.875rem;color:var(--color-text-muted);">${product.stock} in stock</span>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-bottom:32px;">
+              <button id="add-to-cart" class="btn btn-primary" style="flex:1;">Add to Cart</button>
+              <button id="buy-now" class="btn btn-terracotta" style="flex:1;">Buy Now</button>
+              <button id="wishlist-btn" class="btn btn-secondary" style="width:56px;padding:0;display:flex;align-items:center;justify-content:center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="${PotHub.Wishlist.has(product.id) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </button>
+            </div>
+
+            <div style="display:flex;gap:24px;font-size:0.875rem;color:var(--color-text-muted);border-top:1px solid var(--border);padding-top:20px;">
+              <div><strong style="color:var(--text);display:block;margin-bottom:4px;">SKU</strong>${product.sku}</div>
+              <div><strong style="color:var(--text);display:block;margin-bottom:4px;">Category</strong>${product.category}</div>
+              <div><strong style="color:var(--text);display:block;margin-bottom:4px;">Collection</strong>${product.collection}</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:64px;" class="reveal">
+          <div style="border-bottom:1px solid var(--border);display:flex;gap:32px;">
+            <button class="tab-btn active" data-tab="description">Description</button>
+            <button class="tab-btn" data-tab="specs">Specifications</button>
+            <button class="tab-btn" data-tab="reviews">Reviews (${product.reviews})</button>
+          </div>
+          <div class="tab-panel active" id="tab-description">
+            <p style="line-height:1.8;color:var(--color-text-muted);max-width:800px;">${product.description} Each piece is carefully inspected before shipping to ensure the highest quality standards. Perfect for both residential and commercial spaces.</p>
+          </div>
+          <div class="tab-panel" id="tab-specs">
+            <table style="width:100%;max-width:600px;border-collapse:collapse;">
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 0;font-weight:600;">Material</td><td style="padding:12px 0;color:var(--color-text-muted);">Premium Ceramic / Natural Materials</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 0;font-weight:600;">Dimensions</td><td style="padding:12px 0;color:var(--color-text-muted);">Varies by size selection</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 0;font-weight:600;">Weight</td><td style="padding:12px 0;color:var(--color-text-muted);">Lightweight to Heavy (varies)</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 0;font-weight:600;">Drainage</td><td style="padding:12px 0;color:var(--color-text-muted);">Included where applicable</td></tr>
+              <tr><td style="padding:12px 0;font-weight:600;">Care</td><td style="padding:12px 0;color:var(--color-text-muted);">Wipe clean with damp cloth</td></tr>
+            </table>
+          </div>
+          <div class="tab-panel" id="tab-reviews">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+              <div style="font-size:3rem;font-weight:700;font-family:var(--font-display);">${product.rating}</div>
+              <div>
+                <div class="product-rating" style="margin-bottom:4px;">
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div style="font-size:0.875rem;color:var(--color-text-muted);">Based on ${product.reviews} reviews</div>
+              </div>
+            </div>
+            <p style="color:var(--color-text-muted);">Reviews are verified and written by real customers.</p>
+          </div>
+        </div>
+      `;
+
+      // Tab switching
+      container.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          container.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        });
+      });
+
+      // Variant selection
+      container.querySelectorAll('[data-color]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          container.querySelectorAll('[data-color]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedColor = btn.dataset.color;
+        });
+      });
+      container.querySelectorAll('[data-size]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          container.querySelectorAll('[data-size]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedSize = btn.dataset.size;
+        });
+      });
+
+      // Quantity
+      document.getElementById('qty-inc').addEventListener('click', () => {
+        quantity++;
+        document.getElementById('qty-display').textContent = quantity;
+      });
+      document.getElementById('qty-dec').addEventListener('click', () => {
+        if (quantity > 1) { quantity--; document.getElementById('qty-display').textContent = quantity; }
+      });
+
+      // Add to cart
+      document.getElementById('add-to-cart').addEventListener('click', () => {
+        PotHub.Cart.add(product, { quantity, color: selectedColor, size: selectedSize });
+      });
+
+      // Buy now
+      document.getElementById('buy-now').addEventListener('click', () => {
+        PotHub.Cart.add(product, { quantity, color: selectedColor, size: selectedSize });
+        window.location.href = 'checkout.html';
+      });
+
+      // Wishlist
+      document.getElementById('wishlist-btn').addEventListener('click', function() {
+        PotHub.Wishlist.toggle(product.id);
+        const svg = this.querySelector('svg');
+        svg.setAttribute('fill', PotHub.Wishlist.has(product.id) ? 'currentColor' : 'none');
+      });
+
+      // Related products
+      const all = await PotHub.Products.getAll();
+      const related = all.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+      document.getElementById('related-products').innerHTML = related.map(p => PotHub.Products.renderCard(p)).join('');
+
+      // Recently viewed
+      let recent = JSON.parse(localStorage.getItem('pothub_recent') || '[]');
+      recent = recent.filter(id => id !== product.id);
+      recent.unshift(product.id);
+      localStorage.setItem('pothub_recent', JSON.stringify(recent.slice(0, 10)));
+
+      PotHub.Animations.refresh();
+    })();
+  </script>
+</body>
+</html>
